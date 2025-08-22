@@ -39,3 +39,10 @@ buildNumber.properties
 .idea/
 *.iml
 
+# Security - never commit these
+gpg-batch.txt
+*.key
+*.pem
+*-private.asc
+public-key.asc
+

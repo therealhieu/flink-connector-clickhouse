@@ -19,14 +19,39 @@ limitations under the License.
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.apache.flink</groupId>
+		<groupId>io.github.therealhieu</groupId>
 		<artifactId>flink-connector-clickhouse-parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.19.0-1.0.0</version>
 	</parent>
 
+	<groupId>io.github.therealhieu</groupId>
 	<artifactId>flink-connector-clickhouse</artifactId>
 	<name>Flink : Connectors : Clickhouse</name>
+	<description>Apache Flink ClickHouse Connector for reading from and writing to ClickHouse databases</description>
+	<url>https://github.com/therealhieu/flink-connector-clickhouse</url>
 	<packaging>jar</packaging>
+	
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	<scm>
+		<url>https://github.com/therealhieu/flink-connector-clickhouse</url>
+		<connection>scm:git:git@github.com:therealhieu/flink-connector-clickhouse.git</connection>
+		<developerConnection>scm:git:git@github.com:therealhieu/flink-connector-clickhouse.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+	
+	<developers>
+		<developer>
+			<name>therealhieu</name>
+			<email>hieunguyenvn98@gmail.com</email>
+		</developer>
+	</developers>
 
 	<dependencies>
 		<dependency>

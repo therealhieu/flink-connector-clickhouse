@@ -64,7 +64,11 @@ mvn clean deploy -Prelease -DskipTests \
   -pl flink-connector-clickhouse,flink-sql-connector-clickhouse
 ```
 
-**Note**: The parent POM will be deployed automatically as it's required for the child modules.
+**Important Notes**:
+- The parent POM (`flink-connector-clickhouse-parent`) is automatically included and **cannot be skipped**
+- It's required for Maven dependency resolution when users add your artifacts
+- Only the POM file is deployed for the parent (no JAR since it's a POM-only module)
+- The `flink-connector-clickhouse-e2e-test` module is correctly excluded from deployment
 
 ### Step 4: Monitor Deployment
 The deployment will output:
@@ -106,6 +110,31 @@ https://central.sonatype.com/artifact/io.github.therealhieu/flink-sql-connector-
 https://repo1.maven.org/maven2/io/github/therealhieu/flink-connector-clickhouse/1.19.0-1.0.0/
 https://repo1.maven.org/maven2/io/github/therealhieu/flink-sql-connector-clickhouse/1.19.0-1.0.0/
 ```
+
+## What Gets Deployed
+
+When you run the deployment command, these artifacts are uploaded:
+
+### Parent POM (Required - POM only, no JAR)
+- `flink-connector-clickhouse-parent-1.19.0-1.0.0.pom`
+- `flink-connector-clickhouse-parent-1.19.0-1.0.0.pom.asc` (signature)
+
+### Core Connector Module
+- `flink-connector-clickhouse-1.19.0-1.0.0.jar`
+- `flink-connector-clickhouse-1.19.0-1.0.0.pom`
+- `flink-connector-clickhouse-1.19.0-1.0.0-sources.jar`
+- `flink-connector-clickhouse-1.19.0-1.0.0-javadoc.jar`
+- Plus `.asc` signature files for each
+
+### SQL Connector Module (Shaded)
+- `flink-sql-connector-clickhouse-1.19.0-1.0.0.jar` (includes shaded dependencies)
+- `flink-sql-connector-clickhouse-1.19.0-1.0.0.pom`
+- `flink-sql-connector-clickhouse-1.19.0-1.0.0-sources.jar`
+- `flink-sql-connector-clickhouse-1.19.0-1.0.0-javadoc.jar`
+- Plus `.asc` signature files for each
+
+### NOT Deployed
+- ‚ùå `flink-connector-clickhouse-e2e-test` (test module excluded)
 
 ## Using the Published Artifacts
 
@@ -183,7 +212,7 @@ mvn versions:commit
 
 ## Security Notes
 
-† **Never commit these files:**
+ÔøΩ **Never commit these files:**
 - GPG private keys
 - Passphrases or passwords
 - `gpg-batch.txt`

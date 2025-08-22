@@ -46,3 +46,6 @@ gpg-batch.txt
 *-private.asc
 public-key.asc
 
+# Maven flatten plugin
+.flattened-pom.xml
+
